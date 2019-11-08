@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FolderBrowser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="FolderBrowser" Height="450" Width="800" Icon="favorite_folder.ico">
+    <Window.Resources>
+        <Style TargetType="local:FolderBrowserControl">
+            <Setter Property="AllowNewFolder" Value="False"></Setter>
+            <Setter Property="IsReadOnly" Value="True"></Setter>
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <local:FolderBrowserControl x:Name="TrabajoFolderBrowserControl" Label="Directorio de trabajo"></local:FolderBrowserControl>
+        <local:FolderBrowserControl x:Name="TemporalFolderBrowserControl" Label="Directorio temporal"></local:FolderBrowserControl>
+        <local:FolderBrowserControl x:Name="LogFolderBrowserControl" Label="Directorio de log"></local:FolderBrowserControl>
+        <TextBlock Margin="0,20,0,0">
+            <Run>Directorio de trabajo:</Run>
+            <Run Text="{Binding ElementName=TrabajoFolderBrowserControl,Path=FolderPath}"></Run>
+        </TextBlock>
+        <TextBlock>
+            <Run>Directorio temporal:</Run>
+            <Run Text="{Binding ElementName=TemporalFolderBrowserControl,Path=FolderPath}"></Run>
+        </TextBlock>
+        <TextBlock>
+            <Run>Directorio de trabajo:</Run>
+            <Run Text="{Binding ElementName=LogFolderBrowserControl,Path=FolderPath}"></Run>
+        </TextBlock>
+    </StackPanel>
 </Window>
